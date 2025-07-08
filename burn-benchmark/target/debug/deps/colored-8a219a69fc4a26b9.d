@@ -1,0 +1,10 @@
+/Users/evisdrenova/code/projects/tensor-benchmark/burn-benchmark/target/debug/deps/libcolored-8a219a69fc4a26b9.rmeta: /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs
+
+/Users/evisdrenova/code/projects/tensor-benchmark/burn-benchmark/target/debug/deps/colored-8a219a69fc4a26b9.d: /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs
+
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/lib.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/color.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/control.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/error.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/style.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/colored-3.0.0/src/customcolors.rs:

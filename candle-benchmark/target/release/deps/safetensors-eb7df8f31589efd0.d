@@ -1,0 +1,10 @@
+/Users/evisdrenova/code/projects/tensor-benchmark/candle-benchmark/target/release/deps/libsafetensors-eb7df8f31589efd0.rmeta: /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/lib.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/slice.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/tensor.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/../README.md
+
+/Users/evisdrenova/code/projects/tensor-benchmark/candle-benchmark/target/release/deps/libsafetensors-eb7df8f31589efd0.rlib: /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/lib.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/slice.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/tensor.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/../README.md
+
+/Users/evisdrenova/code/projects/tensor-benchmark/candle-benchmark/target/release/deps/safetensors-eb7df8f31589efd0.d: /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/lib.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/slice.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/tensor.rs /Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/../README.md
+
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/lib.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/slice.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/tensor.rs:
+/Users/evisdrenova/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/safetensors-0.4.5/src/../README.md:
