@@ -1,0 +1,17 @@
+# Build artifacts
+/target/
+Cargo.lock
+
+# Benchmark results
+/target/criterion/
+criterion_outputs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db

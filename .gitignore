@@ -1,1 +1,24 @@
+# Build artifacts
 /target
+candle-benchmark/target/
+burn-benchmark/target/
+ndarray-benchmark/target/
+
+# Cargo lock files for sub-projects
+candle-benchmark/Cargo.lock
+burn-benchmark/Cargo.lock
+ndarray-benchmark/Cargo.lock
+
+# Benchmark results
+criterion_outputs/
+*/target/criterion/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
