@@ -1,104 +1,152 @@
-# Rust Tensor Libraries Benchmark Implementation Plan
+# Rust Tensor Libraries Benchmark
 
 ## Overview
 
-Benchmark Rust tensor libraries (Burn, Candle, tch-rs) against PyTorch Python to evaluate performance across different tensor operations and sizes.
+This project benchmarks three Rust tensor libraries - Burn, Candle, and NDArray - across various tensor operations and sizes. Each library is set up as an independent project to avoid dependency conflicts.
 
-## Libraries to Test
+## Project Structure
 
-### Rust Libraries
+```
+tensor-benchmark/
+├── candle-benchmark/     # Candle library benchmarks
+├── burn-benchmark/       # Burn library benchmarks
+├── ndarray-benchmark/    # NDArray library benchmarks
+├── readme.md
+└── .gitignore
+```
 
-1. **Burn** - Pure Rust deep learning framework
-2. **Candle** - Minimalist ML framework for Rust
-3. **tch-rs** - Rust bindings for PyTorch C++ API
-4. **ndarray** - Pure Rust n-dimensional arrays (baseline)
+## Libraries Being Tested
 
-### Python Baseline
+1. **Candle** (v0.8.4) - Minimalist ML framework for Rust
+2. **Burn** (v0.17.1) - Pure Rust deep learning framework with NdArray backend
+3. **NDArray** (v0.16) - Pure Rust n-dimensional arrays (baseline)
 
-- **PyTorch** - Reference implementation
+## How to Run Benchmarks
 
-## Benchmark Categories
+### Prerequisites
+- Rust 1.70+ installed
+- Cargo package manager
 
-### 1. Basic Tensor Operations
+### Running Individual Benchmarks
 
-- Creation (zeros, ones, random)
-- Indexing and slicing
-- Reshaping and transposing
-- Element-wise operations (+, -, \*, /)
+Each library can be benchmarked independently:
 
-### 2. Linear Algebra Operations
+```bash
+# Candle benchmarks
+cd candle-benchmark
+cargo bench
 
-- Matrix multiplication (matmul)
-- Dot product
-- Eigenvalues/eigenvectors
-- SVD decomposition
-- Batch matrix operations
+# Burn benchmarks  
+cd burn-benchmark
+cargo bench
 
-### 3. Reduction Operations
+# NDArray benchmarks
+cd ndarray-benchmark
+cargo bench
+```
 
-- Sum, mean, std, variance
-- Max, min, argmax, argmin
-- Norm calculations (L1, L2)
+### Running All Benchmarks
 
-### 4. Neural Network Primitives
+```bash
+# From the root directory
+./scripts/run_all_benchmarks.sh  # If script exists
+# Or manually:
+cd candle-benchmark && cargo bench && cd ../burn-benchmark && cargo bench && cd ../ndarray-benchmark && cargo bench
+```
 
-- Convolution (conv1d, conv2d, conv3d)
-- Activation functions (ReLU, Sigmoid, Tanh)
-- Pooling operations (max_pool, avg_pool)
-- Batch normalization
-- Dropout
-- Attention mechanisms
+## What's Being Tested
 
-### 5. Memory Operations
+### Current Benchmark Operations
 
-- Memory allocation/deallocation
-- Data copying (CPU ↔ GPU)
-- In-place vs out-of-place operations
+1. **Tensor Creation**
+   - Random tensor generation (various sizes)
+   - Benchmarks throughput in elements/second
 
-## Tensor Shape Test Matrix
+2. **Matrix Multiplication**
+   - Square matrix multiplication (64x64 to 512x512)
+   - Measures FLOPS (floating point operations per second)
 
-### Small Tensors (Edge Cases)
+3. **Element-wise Operations**
+   - Addition and multiplication of tensors
+   - Tests vectorization efficiency
 
-- 1D: [1], [10], [100], [1000]
-- 2D: [1,1], [10,10], [32,32], [100,100]
-- 3D: [1,1,1], [8,8,8], [32,32,32]
+4. **Reduction Operations**
+   - Sum and mean calculations
+   - Benchmarks aggregation performance
 
-### Medium Tensors (Typical ML)
+5. **Vector Operations** (Burn & NDArray only)
+   - Dot product on 1D vectors
+   - Various vector sizes (1K to 1M elements)
 
-- 1D: [10K], [100K], [1M]
-- 2D: [512,512], [1024,1024], [2048,2048]
-- 3D: [64,64,64], [128,128,128], [256,256,256]
-- 4D: [32,3,224,224], [64,64,28,28], [128,512,7,7]
+### Tensor Sizes Tested
 
-### Large Tensors (Stress Test)
+- **Small**: 64x64, 128x128, 256x256
+- **Medium**: 512x512, 1024x1024  
+- **Large**: 2048x2048 (matrix multiplication only)
+- **Vectors**: 1K, 10K, 100K, 1M elements
 
-- 2D: [4096,4096], [8192,8192], [16384,16384]
-- 3D: [512,512,512], [1024,1024,1024]
-- 4D: [256,256,32,32], [512,128,56,56]
+### Performance Metrics
 
-### Batch Operations
+- **Throughput**: Elements processed per second
+- **FLOPS**: Floating point operations per second (for matrix multiplication)
+- **Latency**: Mean execution time with standard deviation
+- **Memory efficiency**: Implicit through throughput measurements
 
-- Various batch sizes: [1,N], [8,N], [32,N], [64,N], [128,N], [256,N]
-- Where N varies by operation complexity
+## Benchmark Results
 
-## Data Types to Test
+Results are generated using the Criterion benchmarking framework and include:
 
-- f32 (primary focus)
-- f64 (precision comparison)
-- i32, i64 (integer operations)
-- f16 (if supported - efficiency)
+- **HTML Reports**: Detailed performance graphs and statistics
+- **Statistical Analysis**: Mean, standard deviation, and confidence intervals
+- **Regression Detection**: Identifies performance regressions between runs
+- **Comparison Plots**: Visual comparison between libraries
 
-## Hardware Configurations
+### Viewing Results
 
-### CPU Benchmarks
+After running benchmarks, HTML reports are generated in each project's `target/criterion/` directory:
 
-- Single-threaded performance
-- Multi-threaded performance (2, 4, 8, 16 threads)
-- Different CPU architectures (Intel, AMD, Apple Silicon)
+```bash
+# Example: View Candle benchmark results
+open candle-benchmark/target/criterion/index.html
 
-### GPU Benchmarks (if supported)
+# Or for all projects
+open */target/criterion/index.html
+```
 
-- CUDA (NVIDIA)
-- Metal (Apple)
-- ROCm (AMD)
-- Memory transfer overhead
+## Implementation Details
+
+### Common Tensor Operations Interface
+
+All three libraries implement the same `TensorBenchmark` trait:
+
+```rust
+pub trait TensorBenchmark {
+    type Tensor;
+    
+    fn create_random_tensor(&self, shape: &[usize]) -> Self::Tensor;
+    fn add(&self, a: &Self::Tensor, b: &Self::Tensor) -> Self::Tensor;
+    fn multiply(&self, a: &Self::Tensor, b: &Self::Tensor) -> Self::Tensor;
+    fn matmul(&self, a: &Self::Tensor, b: &Self::Tensor) -> Self::Tensor;
+    fn sum(&self, tensor: &Self::Tensor) -> f32;
+    fn mean(&self, tensor: &Self::Tensor) -> f32;
+    // ... other operations
+}
+```
+
+### Hardware Configuration
+
+- **CPU**: Multi-threaded execution (uses all available cores)
+- **Data Type**: f32 (32-bit floating point)
+- **Memory**: System RAM (no GPU acceleration currently)
+- **Optimization**: Release mode with LTO enabled
+
+## Future Enhancements
+
+Planned additions for more comprehensive benchmarking:
+
+- GPU acceleration support (CUDA, Metal, ROCm)
+- Additional tensor operations (convolution, pooling, etc.)
+- Mixed precision benchmarking (f16, bf16)
+- Memory usage profiling
+- Batch processing optimizations
+- Cross-platform performance comparison
