@@ -24,6 +24,7 @@ tensor-benchmark/
 ## How to Run Benchmarks
 
 ### Prerequisites
+
 - Rust 1.70+ installed
 - Cargo package manager
 
@@ -36,7 +37,7 @@ Each library can be benchmarked independently:
 cd candle-benchmark
 cargo bench
 
-# Burn benchmarks  
+# Burn benchmarks
 cd burn-benchmark
 cargo bench
 
@@ -59,18 +60,22 @@ cd candle-benchmark && cargo bench && cd ../burn-benchmark && cargo bench && cd 
 ### Current Benchmark Operations
 
 1. **Tensor Creation**
+
    - Random tensor generation (various sizes)
    - Benchmarks throughput in elements/second
 
 2. **Matrix Multiplication**
+
    - Square matrix multiplication (64x64 to 512x512)
    - Measures FLOPS (floating point operations per second)
 
 3. **Element-wise Operations**
+
    - Addition and multiplication of tensors
    - Tests vectorization efficiency
 
 4. **Reduction Operations**
+
    - Sum and mean calculations
    - Benchmarks aggregation performance
 
@@ -81,7 +86,7 @@ cd candle-benchmark && cargo bench && cd ../burn-benchmark && cargo bench && cd 
 ### Tensor Sizes Tested
 
 - **Small**: 64x64, 128x128, 256x256
-- **Medium**: 512x512, 1024x1024  
+- **Medium**: 512x512, 1024x1024
 - **Large**: 2048x2048 (matrix multiplication only)
 - **Vectors**: 1K, 10K, 100K, 1M elements
 
@@ -122,7 +127,7 @@ All three libraries implement the same `TensorBenchmark` trait:
 ```rust
 pub trait TensorBenchmark {
     type Tensor;
-    
+
     fn create_random_tensor(&self, shape: &[usize]) -> Self::Tensor;
     fn add(&self, a: &Self::Tensor, b: &Self::Tensor) -> Self::Tensor;
     fn multiply(&self, a: &Self::Tensor, b: &Self::Tensor) -> Self::Tensor;

@@ -49,7 +49,18 @@ Performance for matrix multiplication:
 
 **Analysis**: Candle dominates matrix multiplication, likely due to optimized GEMM (General Matrix Multiply) implementations. This is crucial for deep learning workloads.
 
-### 3. Element-wise Addition (512×512 + 512×512)
+### 3. Vector Operations (Dot Product)
+
+Performance for vector dot products (100K elements):
+
+| Library     | Mean Time (μs) | Performance Notes    |
+| ----------- | -------------- | -------------------- |
+| **NDArray** | ~11.2          | Optimized vector ops |
+| **Burn**    | ~23.9          | 2.1x slower          |
+
+_Note: Candle benchmarks don't include vector operations_
+
+### 4. Element-wise Addition (512×512 + 512×512)
 
 Performance for element-wise addition:
 
@@ -61,7 +72,7 @@ Performance for element-wise addition:
 
 **Analysis**: All three libraries show nearly identical performance for element-wise operations, suggesting similar vectorization optimizations.
 
-### 4. Reduction Operations (Sum)
+### 5. Reduction Operations (Sum)
 
 Performance for tensor sum operations (256×256 tensors):
 
@@ -70,17 +81,6 @@ Performance for tensor sum operations (256×256 tensors):
 | **Candle**  | ~4.2           | Fastest reduction    |
 | **NDArray** | ~7.3           | Moderate performance |
 | **Burn**    | ~7.8           | Slowest reduction    |
-
-### 5. Vector Operations (Dot Product)
-
-Performance for vector dot products (100K elements):
-
-| Library     | Mean Time (μs) | Performance Notes    |
-| ----------- | -------------- | -------------------- |
-| **NDArray** | ~11.2          | Optimized vector ops |
-| **Burn**    | ~23.9          | 2.1x slower          |
-
-_Note: Candle benchmarks don't include vector operations_
 
 ## Performance Scaling Analysis
 
